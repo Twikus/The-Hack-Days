@@ -16,4 +16,4 @@
 </head>
 
 <body>
-<canvas id="canv" width="100%" height="100%"></canvas>
+    <canvas id="canv" width="100%" height="100%"></canvas>

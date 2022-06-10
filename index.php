@@ -4,10 +4,12 @@ require 'inc/lib_crud.inc.php';
 
 echo '
 <main>
-    <img class="bienvenue" src="medias/glitch.gif" alt="Bienvenue">
+    <div>
+        <img class="bienvenue" src="medias/glitch.gif" alt="Bienvenue">
+    </div>
 </main>';
 
-$next='group';
+$next='name';
 next_page($next);
 
 require 'inc/end.php';

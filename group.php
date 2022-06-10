@@ -7,14 +7,16 @@ prev_page($prev);
 
 echo '
 <main>
-    <h1>Choisis ton groupe de TD :</h1>
-    <div class="groups">
-        <ul>
-            <li><a>TD AB</a></li>
-            <li><a>TD CD</a></li>
-            <li><a>TD EF</a></li>
-            <li><a>TD GH</a></li>
-        </ul>
+    <div>
+        <h1>Choisis ton groupe de TD :</h1>
+        <div class="groups">
+            <form>
+                <li><a>TD AB</a></li>
+                <li><a>TD CD</a></li>
+                <li><a>TD EF</a></li>
+                <li><a>TD GH</a></li>
+            </form>
+        </div>
     </div>
 </main>';
 
