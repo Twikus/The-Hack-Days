@@ -10,23 +10,24 @@ echo '
     <div>
         <h1>Entre ton nom :</h1>
         <form method="POST">
-            <input type="search" list="names" name="nom_prénom">
+            <input type="search" list="names" name="name" id="name" placeholder="Prénom / Nom">
             <datalist id="names">';
             $co = connexionBD();
             $req ='SELECT * FROM etudiant';
             $resultat = $co->query($req);
             foreach ($resultat as $value) {
-                echo '<option>'.$value['etudiant_nom'].' '.$value['etudiant_prenom'].'</option>';
+                echo '<option>'.$value['etudiant_prenom'].' '.$value['etudiant_nom'].'</option>';
             }
             deconnexionBD($co);
             echo '
             </datalist>
         </form>
-    </div>
+    </div>';
 
-    <div>
-        <h1>Ton groupe est :</h1>
-        <h2>Conard</h2>
+    echo'
+    <div class="test">
+        <h1>Tu fais parti :</h1>
+        <h2 id="group_response"></h2>
     </div>
 </main>';
 
