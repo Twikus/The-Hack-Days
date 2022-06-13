@@ -3,14 +3,16 @@ require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
 $prev='index';
-prev_page($prev);
+$next='team';
 
 echo '
+<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>
+
+<form method="GET" action="verif_name.php" name="form">
 <main>
     <div>
         <h1>Entre ton nom :</h1>
-        <form method="POST">
-            <input type="search" list="names" name="name" id="name" placeholder="Prénom / Nom">
+        <input type="text" list="names" name="name" id="name" placeholder="Prénom / Nom">
             <datalist id="names">';
             $co = connexionBD();
             $req ='SELECT * FROM etudiant';
@@ -20,18 +22,23 @@ echo '
             }
             deconnexionBD($co);
             echo '
-            </datalist>
-        </form>
-    </div>';
+            </datalist>';
 
-    echo'
-    <div class="test">
+        if (!empty($_SESSION['erreur'])) {
+            echo $_SESSION['erreur'];
+            unset ($_SESSION['erreur']);
+        }
+    echo
+    '</div>';
+
+    echo
+    '<div class="test">
         <h1>Tu fais parti :</h1>
         <h2 id="group_response"></h2>
     </div>
-</main>';
+</main>
 
-$next='team';
-next_page($next);
+<footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>
+</form>';
 
 require 'inc/end.php';

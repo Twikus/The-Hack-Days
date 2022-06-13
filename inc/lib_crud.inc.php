@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'config.inc.php';
 
 function connexionBD(){
@@ -13,6 +14,38 @@ function connexionBD(){
     }
     return $co;
 }
+
+function deconnexionBD($co) {
+    $co=null;
+}
+
+function ChangeGroup($co,$id,$team_name,$nouvelleImage){
+    $req = "UPDATE groupe SET groupe_nom='$team_name',groupe_photo='$nouvelleImage' WHERE groupe_id=".$id;
+    //echo '<p>' . $req . '</p>' . "\n";
+    try {
+        $resultat = $co->query($req);
+    } catch (PDOException $e) {
+        // s'il y a une erreur, on l'affiche
+        echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+        die();
+    }
+}
+
+function ShowGroup($co,$etudiant_id){
+    $req ='SELECT * FROM groupe WHERE groupe_id="'.$etudiant_id.'"';
+    $resultat = $co->query($req);
+
+    echo'<section>'; 
+    foreach ($resultat as $value) {
+    echo'
+'.$value['groupe_nom'].'<br>
+<img src="medias/uploaded_images/'.$value['groupe_photo'].'"><br>
+';
+    }
+    echo'</section>';
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
 
 function AfficherTest($co){
     $req ='SELECT * FROM etudiant INNER JOIN groupe ON etudiant._groupe_id = groupe.groupe_id';
@@ -31,16 +64,3 @@ function AfficherTest($co){
     }
     echo'</section>';
 }
-
-function deconnexionBD($co) {
-    $co=null;
-}
-
-function prev_page($prev){
-    echo '<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>';
-}
-
-function next_page($next){
-    echo '<footer><a href="'.$next.'.php"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></a></footer>';
-}
-?>
