@@ -2,17 +2,19 @@
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
+/*-----Données-----*/
 $prev='index';
 $next='team';
+/*-----Données-----*/
 
-echo '
-<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>
+prevpage($prev);
 
-<form method="GET" action="verif_name.php" name="form">
+echo'
+<form method="GET" action="inc/verif_name.php" name="form">
 <main>
     <div>
         <h1>Entre ton nom :</h1>
-        <input type="text" list="names" name="name" id="name" placeholder="Prénom / Nom">
+        <input type="text" list="names" name="name" placeholder="Prénom / Nom" id="name">
             <datalist id="names">';
             $co = connexionBD();
             $req ='SELECT * FROM etudiant';
@@ -22,7 +24,8 @@ echo '
             }
             deconnexionBD($co);
             echo '
-            </datalist>';
+            </datalist>
+            <p style="color: red;" id="error"></p>';
 
         if (!empty($_SESSION['erreur'])) {
             echo $_SESSION['erreur'];
@@ -32,13 +35,12 @@ echo '
     '</div>';
 
     echo
-    '<div class="test">
-        <h1>Tu fais parti :</h1>
+    '<div>
         <h2 id="group_response"></h2>
     </div>
-</main>
+</main>';
 
-<footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>
-</form>';
+nextpage_form($next);
+echo '</form>';
 
 require 'inc/end.php';

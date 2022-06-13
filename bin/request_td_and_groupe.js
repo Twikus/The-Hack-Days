@@ -3,9 +3,12 @@ function Show_GroupAndTD(){
     if ($.trim(name) != ''){
         $.post('inc/request_td_and_groupe.php', {name: name}, function(data){
             var convert_data = Object.values(data.split(','));
+            
+            /*A SUPP*/
             console.log(data);
             console.log(convert_data);
             console.log('-----------------');
+            /*A SUPP*/
 
             if (convert_data[0] === ""){
                 $('#group_response').text(' ');
@@ -18,7 +21,5 @@ function Show_GroupAndTD(){
     }
 };
 
-
 $('#name').keyup(Show_GroupAndTD);
-
 $('#name').on('blur input', (Show_GroupAndTD));

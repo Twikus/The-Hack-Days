@@ -2,6 +2,7 @@
 session_start();
 require 'config.inc.php';
 
+/*--------------------Connexion de la DB--------------------*/
 function connexionBD(){
     $co = null;
     try {
@@ -15,10 +16,12 @@ function connexionBD(){
     return $co;
 }
 
+/*--------------------Deconnexion de la DB--------------------*/
 function deconnexionBD($co) {
     $co=null;
 }
 
+/*--------------------Mettre a jour le groupe une fois connecté--------------------*/
 function ChangeGroup($co,$id,$team_name,$nouvelleImage){
     $req = "UPDATE groupe SET groupe_nom='$team_name',groupe_photo='$nouvelleImage' WHERE groupe_id=".$id;
     //echo '<p>' . $req . '</p>' . "\n";
@@ -31,6 +34,7 @@ function ChangeGroup($co,$id,$team_name,$nouvelleImage){
     }
 }
 
+/*--------------------Montré à quoi ressemble son groupe--------------------*/
 function ShowGroup($co,$etudiant_id){
     $req ='SELECT * FROM groupe WHERE groupe_id="'.$etudiant_id.'"';
     $resultat = $co->query($req);
@@ -45,22 +49,17 @@ function ShowGroup($co,$etudiant_id){
     echo'</section>';
 }
 
-/*-------------------------------------------------------------------------------------------------------*/
+/*--------------------Bouton retour--------------------*/
+function prevpage($prev){
+    echo '<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>';
+}
 
-function AfficherTest($co){
-    $req ='SELECT * FROM etudiant INNER JOIN groupe ON etudiant._groupe_id = groupe.groupe_id';
-    $resultat = $co->query($req);
+/*--------------------Bouton retour--------------------*/
+function nextpage($next){
+    echo '<footer><a href="'.$next.'.php"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></a></footer>';
+}
 
-    echo'<section>'; 
-    foreach ($resultat as $value) {
-    echo'
-'.$value['etudiant_nom'].'<br>
-'.$value['etudiant_prenom'].'<br>
-'.$value['etudiant_td'].'<br>
-'.$value['groupe_nom'].'<br>
-'.$value['groupe_photo'].'<br>
-'.$value['groupe_temps'].'
-';
-    }
-    echo'</section>';
+/*--------------------Bouton retour pour les pages avec un form--------------------*/
+function nextpage_form($next){
+    echo '<footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>';
 }

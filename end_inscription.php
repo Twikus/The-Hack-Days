@@ -2,13 +2,15 @@
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
+/*-----Données-----*/
 $prev='team';
 $next='';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
+/*-----Données-----*/
+
+prevpage($prev);
 
 echo '
-<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>
-
 <main>
     <div>
         <h1>Ton équipe est donc :</h1>';
@@ -17,8 +19,8 @@ echo '
         deconnexionBD($co);
         echo'
     </div>
-</main>
+</main>';
 
-<footer><a href="'.$next.'.php"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></a></footer>';
+nextpage($next);
 
 require 'inc/end.php';
