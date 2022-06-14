@@ -16,9 +16,9 @@ prevpage($prev);
 /*-----Données-----*/
 
 echo '
-<form method="POST" action="inc/verif_team.php" name="form">
+<form method="POST" action="inc/verif_team.php" name="form" enctype="multipart/form-data">
 <main>
-    <div>
+    <section>
         <h1>Entre ton nom d\'équipe:</h1>
         <input type="text" name="team_name" placeholder="Nom de l\'équipe" id="team">';
         if (!empty($_SESSION['erreur_name'])) {
@@ -26,18 +26,20 @@ echo '
             unset ($_SESSION['erreur_name']);
         }
         echo'
-        <p class="error"></p>
-    </div>
+        <p class="error" id="name_error"></p>
+    </section>
 
-    <div>
+    <section>
         <h1>Votre photo d\'équipe :</h1>
-        <input type="file" name="image">';
+        <div class="file">
+            <input type="file" name="image" accept="image/png, image/jpg, image/jpeg">
+        </div>';
         if (!empty($_SESSION['erreur_file'])) {
             echo $_SESSION['erreur_file'];
             unset ($_SESSION['erreur_file']);
         }
         echo'
-    </div>
+    </section>
 </main>';
 
 nextpage_form($next);

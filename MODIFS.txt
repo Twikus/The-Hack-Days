@@ -1,2 +1,5 @@
 - Combiner le name_check et verif_name pour qu'on ne puisse pas faire suivant si la DB ne retrouve pas le nom !
 - Uniformiser les erreurs et le code !
+
+- Clean code !
+- Animer message erreurs

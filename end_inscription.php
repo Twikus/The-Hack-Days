@@ -12,13 +12,15 @@ prevpage($prev);
 
 echo '
 <main>
-    <div>
-        <h1>Ton équipe est donc :</h1>';
+    <section>
+        <h1>Ton équipe est donc :</h1>
+    </section>
+    <section>';
         $co=connexionBD();
         ShowGroup($co,$etudiant_id);
         deconnexionBD($co);
         echo'
-    </div>
+    </section>
 </main>';
 
 nextpage($next);

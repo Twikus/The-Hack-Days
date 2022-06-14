@@ -12,7 +12,7 @@ prevpage($prev);
 echo'
 <form method="GET" action="inc/verif_name.php" name="form">
 <main>
-    <div>
+    <section>
         <h1>Entre ton nom :</h1>
         <input type="text" list="names" name="name" placeholder="Prénom / Nom" id="name">
             <datalist id="names">';
@@ -32,12 +32,12 @@ echo'
             unset ($_SESSION['erreur']);
         }
     echo
-    '</div>';
+    '</section>';
 
     echo
-    '<div>
+    '<section>
         <h2 id="group_response"></h2>
-    </div>
+    </section>
 </main>';
 
 nextpage_form($next);

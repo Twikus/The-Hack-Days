@@ -8,20 +8,20 @@ $team_name=$_POST['team_name'];
 $imageType=$_FILES["image"]["type"];
 
 if (empty($team_name) && empty($imageType)){
-    $_SESSION['erreur_file']='<p style="color: red;">Tu dois choisir une image pour ton équipe !</p> <br/>';
-    $_SESSION['erreur_name']='<p style="color: red;">Tu dois choisir un nom pour ton équipe !</p> <br/>';
+    $_SESSION['erreur_file']='<p class="error">Tu dois choisir une image pour ton équipe !</p> <br/>';
+    $_SESSION['erreur_name']='<p class="error">Tu dois choisir un nom pour ton équipe !</p> <br/>';
     header('Location: ../'.$prev.'.php');
 }elseif(empty($team_name)){
-    $_SESSION['erreur_name']='<p style="color: red;">Tu dois choisir un nom pour ton équipe !</p> <br/>';
+    $_SESSION['erreur_name']='<p class="error">Tu dois choisir un nom pour ton équipe !</p> <br/>';
     header('Location: ../'.$prev.'.php');
 }elseif(empty($imageType)){
-    $_SESSION['erreur_file']='<p style="color: red;">Tu dois choisir une image pour ton équipe !</p> <br/>';
+    $_SESSION['erreur_file']='<p class="error">Tu dois choisir une image pour ton équipe !</p> <br/>';
     header('Location: ../'.$prev.'.php');
 }else{
     if ( ($imageType != "image/png") &&
     ($imageType != "image/jpg") &&
     ($imageType != "image/jpeg") ) {
-        $_SESSION['erreur_file']='<p style="color: red;">Désolé, le type d\'image n\'est pas reconnu ! Seuls les formats PNG et JPEG sont autorisés.</p> <br/>';
+        $_SESSION['erreur_file']='<p class="error">Désolé, le type d\'image n\'est pas reconnu ! Seuls les formats PNG et JPEG sont autorisés.</p> <br/>';
         header('Location: ../'.$prev.'.php');
         die();
     }
@@ -29,12 +29,12 @@ if (empty($team_name) && empty($imageType)){
 
     if(is_uploaded_file($_FILES["image"]["tmp_name"])) {
         if(!move_uploaded_file($_FILES["image"]["tmp_name"],"../medias/uploaded_images/".$nouvelleImage)) {
-            $_SESSION['erreur_file']='<p style="color: red;">Problème avec la sauvegarde de l\'image, désolé...</p> <br/>';
+            $_SESSION['erreur_file']='<p class="error">Problème avec la sauvegarde de l\'image, désolé...</p> <br/>';
             header('Location: ../'.$prev.'.php');
             die();
         }
     } else {
-        $_SESSION['erreur_file']='<p style="color: red;">Problème : image non chargée...</p> <br/>';
+        $_SESSION['erreur_file']='<p class="error">Problème : image non chargée...</p> <br/>';
         header('Location: ../'.$prev.'.php');
         die();
     }

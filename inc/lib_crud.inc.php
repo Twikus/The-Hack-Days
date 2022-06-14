@@ -39,14 +39,14 @@ function ShowGroup($co,$etudiant_id){
     $req ='SELECT * FROM groupe WHERE groupe_id="'.$etudiant_id.'"';
     $resultat = $co->query($req);
 
-    echo'<section>'; 
     foreach ($resultat as $value) {
     echo'
-'.$value['groupe_nom'].'<br>
-<img src="medias/uploaded_images/'.$value['groupe_photo'].'"><br>
+    <div>
+        <h2>'.$value['groupe_nom'].'</h2>
+        <img src="medias/uploaded_images/'.$value['groupe_photo'].'">
+    </div>
 ';
     }
-    echo'</section>';
 }
 
 /*--------------------Bouton retour--------------------*/

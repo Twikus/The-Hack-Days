@@ -8,9 +8,9 @@ $next='name';
 
 echo '
 <main>
-    <div>
-        <img class="bienvenue" src="medias/glitch.gif" alt="Bienvenue">
-    </div>
+    <section>
+        <img class="bienvenue" src="medias/background_2.gif" alt="Bienvenue">
+    </section>
 </main>';
 
 nextpage($next);
