@@ -5,25 +5,28 @@ require 'inc/lib_crud.inc.php';
 $prev='name';
 $next='end_inscription';
 
+/*A SUPP
 echo $_SESSION['prenom_etudiant_session'];
 echo '<br>';
 echo $_SESSION['nom_etudiant_session'];
+A SUPP*/
 
 /*-----Données-----*/
 prevpage($prev);
 /*-----Données-----*/
 
 echo '
-<form method="POST" action="inc/verif_team.php" name="form" enctype="multipart/form-data">
+<form method="POST" action="inc/verif_team.php" name="form">
 <main>
     <div>
         <h1>Entre ton nom d\'équipe:</h1>
-        <input type="text" name="team_name">';
+        <input type="text" name="team_name" placeholder="Nom de l\'équipe" id="team">';
         if (!empty($_SESSION['erreur_name'])) {
             echo $_SESSION['erreur_name'];
             unset ($_SESSION['erreur_name']);
         }
         echo'
+        <p class="error"></p>
     </div>
 
     <div>

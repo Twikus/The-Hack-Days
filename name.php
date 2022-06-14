@@ -25,7 +25,7 @@ echo'
             deconnexionBD($co);
             echo '
             </datalist>
-            <p style="color: red;" id="error"></p>';
+            <p class="error"></p>';
 
         if (!empty($_SESSION['erreur'])) {
             echo $_SESSION['erreur'];

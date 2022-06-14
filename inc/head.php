@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Hack Days</title>
 
-    <!--link rel="stylesheet" href="styles.css"-->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- Fonts -->
@@ -16,4 +16,4 @@
 </head>
 
 <body>
-    <!--canvas id="canv" width="100%" height="100%"></canvas-->
+    <canvas id="canv" width="100%" height="100%"></canvas>

@@ -18,7 +18,6 @@ if ($lignes_resultat>0) {
     $_SESSION['groupe_etudiant_session']=$ligne['_groupe_id'];
     header('Location: ../'.$next.'.php');
 } else {
-    $_SESSION['erreur']='<p style="color: red;">L\'utilisateur n\'existe pas !</p> <br/>';
     header('Location: ../'.$prev.'.php');
 }
 deconnexionBD($co);
