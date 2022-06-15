@@ -1,7 +1,7 @@
 <?php
 require 'lib_crud.inc.php';
 
-$prev='first_challenge';
+$prev='challenge';
 $next='congratulation';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
 $challenge=$_GET['challenge'];

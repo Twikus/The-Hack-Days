@@ -4,7 +4,7 @@ require 'inc/lib_crud.inc.php';
 
 /*-----Données-----*/
 $prev='showgroup';
-$next='first_challenge';
+$next='challenge';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
 /*-----Données-----*/
 

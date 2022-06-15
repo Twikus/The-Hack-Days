@@ -3,7 +3,7 @@ require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
 /*-----Données-----*/
-$next='first_challenge';
+$next='challenge';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
 /*-----Données-----*/
 
