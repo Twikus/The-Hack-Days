@@ -51,7 +51,14 @@ function ShowGroup($co,$etudiant_id){
 
 /*--------------------Bouton retour--------------------*/
 function prevpage($prev){
-    echo '<header class=button><div><a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a></div></header>';
+    echo '
+    <header class=button>
+        <div>
+            <a href="'.$prev.'.php"><span class="material-symbols-outlined">keyboard_backspace</span></a>
+        </div>
+        <div>
+        </div>
+    </header>';
 }
 
 /*--------------------Bouton retour--------------------*/
@@ -60,6 +67,6 @@ function nextpage($next){
 }
 
 /*--------------------Bouton retour pour les pages avec un form--------------------*/
-function nextpage_form($next){
+function nextpage_form(){
     echo '<footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>';
 }

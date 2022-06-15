@@ -4,13 +4,13 @@ require 'inc/lib_crud.inc.php';
 
 /*-----Données-----*/
 $prev='index';
-$next='team';
+$next='verif_name';
 /*-----Données-----*/
 
 prevpage($prev);
 
 echo'
-<form method="GET" action="inc/verif_name.php" name="form">
+<form method="GET" action="inc/'.$next.'.php" name="form">
 <main>
     <section>
         <h1>Entre ton nom :</h1>
@@ -26,11 +26,6 @@ echo'
             echo '
             </datalist>
             <p class="error"></p>';
-
-        if (!empty($_SESSION['erreur'])) {
-            echo $_SESSION['erreur'];
-            unset ($_SESSION['erreur']);
-        }
     echo
     '</section>';
 
@@ -40,7 +35,7 @@ echo'
     </section>
 </main>';
 
-nextpage_form($next);
+nextpage_form();
 echo '</form>';
 
 require 'inc/end.php';
