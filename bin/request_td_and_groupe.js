@@ -1,7 +1,7 @@
-function Show_GroupAndTD(){
+function Show_GroupAndTP(){
     var name = $('#name').val();
     if ($.trim(name) != ''){
-        $.post('inc/request_td_and_groupe.php', {name: name}, function(data){
+        $.post('inc/request_tp_and_groupe.php', {name: name}, function(data){
             var convert_data = Object.values(data.split(','));
             
             /*A SUPP*/
@@ -13,7 +13,7 @@ function Show_GroupAndTD(){
             if (convert_data[0] === ""){
                 $('#group_response').text(' ');
             }else{
-            $('#group_response').text('Du TD '+convert_data[0]+' et du groupe "'+convert_data[1]+'"');
+            $('#group_response').text('Du TP '+convert_data[0]+' et du groupe "'+convert_data[1]+'"');
             }   
         });
     }else{
@@ -21,5 +21,5 @@ function Show_GroupAndTD(){
     }
 };
 
-$('#name').keyup(Show_GroupAndTD);
+$('#name').keyup(Show_GroupAndTP);
 $('#name').on('blur input', (Show_GroupAndTD));

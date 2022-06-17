@@ -16,19 +16,19 @@ foreach ($_SESSION as $key=>$val){
 
 /*Appliquer au temps appli*/
 
-$le_soustrait = ($_SESSION['challenges_temps'][$_SESSION['complete_challenge']]);
+$le_soustrait = $_SESSION['challenges_temps'][$_SESSION['complete_challenge']];
 var_dump($le_soustrait);
 echo '<br>';
-$le_soustrayant = gmdate("i:s", strtotime('01:00:10'));
+$le_soustrayant = '00:00:39';
 var_dump($le_soustrayant);
 echo '<br>';
-$final = gmdate("H:i",strtotime($le_soustrait)-strtotime($le_soustrayant));
+$final = gmdate("H:i:s",strtotime($le_soustrait)-strtotime($le_soustrayant));
 echo $final;
 
 echo '<br>';
 echo '-----------------------------------------------------------';
 echo '<br>';
 $testeur = gmdate("H:i:s", strtotime('00:00:10'));
-$test = gmdate("i:s",strtotime($final)+strtotime($testeur));
+echo $testeur.'<br>';
+$test = gmdate("H:i:s",strtotime($final)+strtotime($testeur));
 echo $test;
-

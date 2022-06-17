@@ -16,6 +16,8 @@ if (!empty($_SESSION['complete_challenge'])){
     unset($_SESSION['complete_challenge']);
 }
 
+$final = gmdate("H:i:s",strtotime($_SESSION['challenges_temps'][$_SESSION['complete_challenge']])-strtotime($_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']]));
+
 
 $co = connexionBD();
 $resultat = $co->query('SELECT * FROM groupe WHERE groupe_id="'.$etudiant_id.'"');
@@ -44,5 +46,6 @@ if ($lignes_resultat>0) {
 }
 
 $_SESSION['second_error']='<p class=error>  Temps de ce defi ->'.$_SESSION['challenges_temps'][$_SESSION['complete_challenge']].'<br>
-                                            Temps du defi prec ->'.$_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']].'<br></p>';
+                                            Temps du defi prec ->'.$_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']].'<br>
+                                            Temps du defi ->'.$final.'<br></p>';
 deconnexionBD($co);

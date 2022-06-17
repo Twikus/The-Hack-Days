@@ -7,4 +7,4 @@ $actual_time = strtotime(gmdate("H:i:s",$raw_actual_time));
 $launch_time = strtotime($_SESSION["launch_time"]);
 
 $result = $actual_time-$launch_time;
-echo gmdate("i:s",$result);
+echo gmdate("H:i:s",$result);
