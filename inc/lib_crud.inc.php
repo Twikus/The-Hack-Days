@@ -2,6 +2,10 @@
 session_start();
 require 'config.inc.php';
 
+/* A SUPP */
+echo '<p style="position:absolute; right:10px;">'.$_SESSION['prenom_etudiant_session'].' '.$_SESSION['nom_etudiant_session'].'</p>';
+/* A SUPP */
+
 /*--------------------Connexion de la DB--------------------*/
 function connexionBD(){
     $co = null;

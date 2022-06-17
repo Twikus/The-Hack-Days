@@ -3,7 +3,7 @@ require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
 /*-----Données-----*/
-$next='challenge_verif';
+$next='verif_challenge';
 if (empty($_SESSION['challenges_names'])){
     $_SESSION['challenges_names']=array('groupe_defi_1' => 'Le Cr’Hack du Dev',
                                         'groupe_defi_2' => 'Hack n’ Snap', 
@@ -13,6 +13,7 @@ if (empty($_SESSION['challenges_names'])){
 /*-----Données-----*/
 
 echo '
+<p style="position:absolute;" id="chrono"></p>
 <form method="GET" action="inc/'.$next.'.php" name="form" enctype="multipart/form-data">
 <main>
     <section>
@@ -37,6 +38,7 @@ echo '
 </main>';
 
 nextpage_form();
-echo '</form>';
+echo '</form>
+<script src="js/timer.js"></script>';
 
 require 'inc/end.php';

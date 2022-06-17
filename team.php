@@ -7,11 +7,6 @@ $prev='name';
 $next='verif_team';
 /*-----Données-----*/
 
-/*A SUPP
-echo $_SESSION['prenom_etudiant_session'];
-echo '<br>';
-echo $_SESSION['nom_etudiant_session'];
-A SUPP*/
 prevpage($prev);
 
 echo '
