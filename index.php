@@ -6,6 +6,8 @@ require 'inc/lib_crud.inc.php';
 $next='name';
 /*-----Données-----*/
 
+session_destroy();
+
 echo '
 <main>
     <section>
