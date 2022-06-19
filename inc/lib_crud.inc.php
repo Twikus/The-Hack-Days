@@ -2,6 +2,12 @@
 session_start();
 require 'config.inc.php';
 
+function error_found(){
+  header("Location: ./index.php");
+}
+set_error_handler('error_found');
+
+
 /*--------------------Connexion de la DB--------------------*/
 function connexionBD(){
     $co = null;
@@ -63,10 +69,11 @@ function prevpage($prev){
 
 /*--------------------Bouton retour--------------------*/
 function nextpage($next){
-    echo '<footer><a href="'.$next.'.php"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></a></footer>';
-}
-
-/*--------------------Bouton retour pour les pages avec un form--------------------*/
-function nextpage_form(){
-    echo '<footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>';
+    if ($next == 'verif_name' || $next == 'verif_team' || $next == 'verif_challenge'){
+        echo '
+        <footer onclick="form.submit()"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></footer>
+        </form>';
+    }else{
+        echo '<footer><a href="'.$next.'.php"><p>Suivant</p><span class="material-symbols-outlined">arrow_right_alt</span></a></footer>';
+    }
 }

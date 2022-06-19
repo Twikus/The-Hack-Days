@@ -2,10 +2,16 @@
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
-/*-----Données-----*/
+/*-------------------- Verif --------------------*/
+if (!isset($_SESSION['groupe_etudiant_session'])){
+    header('Location: index.php');
+}
+/*-------------------- Verif --------------------*/
+
+/*-------------------- Data --------------------*/
 $next='index';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
-/*-----Données-----*/
+/*-------------------- Data --------------------*/
 
 echo '
 <main>
@@ -16,10 +22,10 @@ echo '
         <h1>Tes résultats sont :</h1>
         <ul>';
             foreach($_SESSION['challenges_temps_inde'] as $key => $value){
-                echo '<li>'.$key.' : '.$value.'</li>';
+                echo '<li>'.$key.' : <br><span>'.$value.'</span></li>';
             }
             echo'
-            <li> Ton temps global est de : '.$_SESSION['time_overall'].'</li>
+            <li> Ton temps global est de : <span>'.$_SESSION['time_overall'].'</span></li>
         </ul>';
             $co = connexionBD();
             $req = "UPDATE groupe SET groupe_temps='".$_SESSION['time_overall']."' WHERE groupe_id=".$etudiant_id;

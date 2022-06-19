@@ -1,13 +1,14 @@
 <?php
 require 'lib_crud.inc.php';
 
+/*-------------------- Data --------------------*/
 $prev='challenge';
 $next='congratulation';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
-$challenge=$_GET['challenge'];
-$response=$_GET['response'];
+$challenge=$_POST['challenge'];
+$response=$_POST['response'];
 $surrender='00:25:00';
-
+/*-------------------- Data --------------------*/
 
 if ($_SESSION['time']=='00:00:00'){
     $actual_time=$_SESSION['classic_time'];
@@ -21,7 +22,6 @@ if (empty($_SESSION['challenges_temps']) || empty($_SESSION['challenges_temps_in
 }
 if (!empty($_SESSION['complete_challenge'])){
     $_SESSION['older_complete_challenge'] = $_SESSION['complete_challenge'];
-    unset($_SESSION['complete_challenge']);
 }
 
 $co = connexionBD();
@@ -33,24 +33,17 @@ if ($lignes_resultat>0) {
             $_SESSION['complete_challenge']=$_SESSION['challenges_names'][$challenge];
             unset($_SESSION['challenges_names'][$challenge]);
             $_SESSION['challenges_temps'] += array($_SESSION['complete_challenge'] => gmdate("H:i:s",strtotime($_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']])+strtotime($surrender)));
-            if ($actual_time < $surrender){
-                $_SESSION['challenges_temps_inde'] += array($_SESSION['complete_challenge'] => $surrender);
-                $_SESSION['time_statut'] = 0;
-                $_SESSION['delay_time']='00:00:00';
-                header('Location: ../'.$next.'.php');
-            }else{
-                $calculated_time = gmdate("H:i:s",strtotime($_SESSION['challenges_temps'][$_SESSION['complete_challenge']])-strtotime($_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']]));
-                $_SESSION['challenges_temps_inde'] += array($_SESSION['complete_challenge'] => $calculated_time);
-                $_SESSION['time_statut'] = 0;
-                $_SESSION['delay_time']='00:00:00';
-                header('Location: ../'.$next.'.php');
-            }
+
+            $_SESSION['challenges_temps_inde'] += array($_SESSION['complete_challenge'] => $surrender);
+            $_SESSION['time_statut'] = 0;
+            $_SESSION['delay_time']='00:00:00';
+            header('Location: ../'.$next.'.php');
         }else{
             if ($value[$challenge] == $response){
                 $_SESSION['complete_challenge']=$_SESSION['challenges_names'][$challenge];
                 unset($_SESSION['challenges_names'][$challenge]);
-
                 $_SESSION['challenges_temps'] += array($_SESSION['complete_challenge'] => $actual_time);
+                
                 $calculated_time = gmdate("H:i:s",strtotime($_SESSION['challenges_temps'][$_SESSION['complete_challenge']])-strtotime($_SESSION['challenges_temps'][$_SESSION['older_complete_challenge']]));
                 $_SESSION['challenges_temps_inde'] += array($_SESSION['complete_challenge'] => $calculated_time);
                 $_SESSION['time_statut'] = 0;

@@ -2,11 +2,17 @@
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
-/*-----Données-----*/
+/*-------------------- Verif --------------------*/
+if (!isset($_SESSION['groupe_etudiant_session'])){
+    header('Location: index.php');
+}
+/*-------------------- Verif --------------------*/
+
+/*-------------------- Data --------------------*/
 $prev='team';
 $next='ready';
 $etudiant_id=$_SESSION['groupe_etudiant_session'];
-/*-----Données-----*/
+/*-------------------- Data --------------------*/
 
 prevpage($prev);
 

@@ -2,19 +2,24 @@
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
 
-/*-----Données-----*/
+/*-------------------- Data --------------------*/
 $prev='index';
 $next='verif_name';
-/*-----Données-----*/
+if (isset($_SESSION['groupe_etudiant_session'])){
+    $student_name = $_SESSION['prenom_etudiant_session'].' '.$_SESSION['nom_etudiant_session'];
+}else{
+    $student_name = '';
+}
+/*-------------------- Data --------------------*/
 
 prevpage($prev);
 
 echo'
-<form method="GET" action="inc/'.$next.'.php" name="form">
+<form method="POST" action="inc/'.$next.'.php" name="form">
 <main>
     <section>
         <h1>Entre ton nom :</h1>
-        <input type="text" list="names" name="name" placeholder="Prénom / Nom" id="name">
+        <input type="text" list="names" name="name" placeholder="Prénom / Nom" id="name" value="'.$student_name.'">
             <datalist id="names">';
             $co = connexionBD();
             $req ='SELECT * FROM etudiant';
@@ -35,7 +40,6 @@ echo'
     </section>
 </main>';
 
-nextpage_form();
-echo '</form>';
+nextpage($next);
 
 require 'inc/end.php';

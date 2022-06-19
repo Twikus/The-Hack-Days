@@ -1,1 +1,0 @@
-Add un if non empty session du nom => Mettre dans place holder, sinon unset;

@@ -1,21 +1,25 @@
 <?php
 require 'lib_crud.inc.php';
 
+/*-------------------- Data --------------------*/
 $prev='team';
 $next='showgroup';
 $id=$_SESSION['groupe_etudiant_session'];
 $team_name=$_POST['team_name'];
 $imageType=$_FILES["image"]["type"];
+$name_error = '<p id="name_error_2" class="error">Tu dois choisir un nom pour ton équipe !</p>';
+$file_error = '<p id="file_error_2" class="error">Tu dois choisir une image pour ton équipe !</p>';
+/*-------------------- Data --------------------*/
 
 if (empty($team_name) && empty($imageType)){
-    $_SESSION['second_error']='<p class="error">Tu dois choisir une image pour ton équipe !</p> <br/>';
-    $_SESSION['first_error']='<p class="error">Tu dois choisir un nom pour ton équipe !</p> <br/>';
+    $_SESSION['first_error']=$name_error;
+    $_SESSION['second_error']='<br/>'.$file_error;
     header('Location: ../'.$prev.'.php');
 }elseif(empty($team_name)){
-    $_SESSION['first_error']='<p class="error">Tu dois choisir un nom pour ton équipe !</p> <br/>';
+    $_SESSION['first_error']=$name_error;
     header('Location: ../'.$prev.'.php');
 }elseif(empty($imageType)){
-    $_SESSION['second_error']='<p class="error">Tu dois choisir une image pour ton équipe !</p> <br/>';
+    $_SESSION['second_error']=$file_error;
     header('Location: ../'.$prev.'.php');
 }else{
     if ( ($imageType != "image/png") &&

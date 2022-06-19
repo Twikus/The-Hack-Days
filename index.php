@@ -1,17 +1,16 @@
 <?php
 require 'inc/head.php';
 require 'inc/lib_crud.inc.php';
-
-/*-----Données-----*/
-$next='name';
-/*-----Données-----*/
-
 session_destroy();
+
+/*-------------------- Data --------------------*/
+$next='name';
+/*-------------------- Data --------------------*/
 
 echo '
 <main>
     <section>
-        <img class="bienvenue" src="medias/background_2.gif" alt="Bienvenue">
+        <img class="bienvenue" src="medias/background.gif" alt="Bienvenue">
     </section>
 </main>';
 

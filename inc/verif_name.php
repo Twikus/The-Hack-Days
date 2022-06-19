@@ -1,10 +1,12 @@
 <?php
 require 'lib_crud.inc.php';
 
+/*-------------------- Data --------------------*/
 $prev='name';
 $next='team';
+$name=$_POST['name'];
+/*-------------------- Data --------------------*/
 
-$name=$_GET['name'];
 $co = connexionBD();
 
 $alias = "SELECT * FROM (SELECT *, CONCAT_WS (' ', etudiant_prenom, etudiant_nom) AS etudiant_nomcomplet FROM etudiant) AS alltable WHERE etudiant_nomcomplet";
@@ -20,4 +22,5 @@ if ($lignes_resultat>0) {
 } else {
     header('Location: ../'.$prev.'.php');
 }
+
 deconnexionBD($co);

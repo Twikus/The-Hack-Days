@@ -1,13 +1,22 @@
 <?php
 require 'inc/lib_crud.inc.php';
-if (isset($_SESSION['time_overall'])){
-    header('Location: index.php');
-}else{
-
 require 'inc/head.php';
 
-/*-----Données-----*/
+/*-------------------- Verif --------------------*/
+if (!isset($_SESSION['groupe_etudiant_session'])){
+    header('Location: index.php');
+}
+
+if (isset($_SESSION['time_overall'])){
+    header('Location: index.php');
+}
+/*-------------------- Verif --------------------*/
+
+/*-------------------- Data --------------------*/
 $next='verif_challenge';
+if (!isset($_SESSION['time'])){
+    $_SESSION['time']='00:00:00';
+}
 if (!isset($_SESSION['time_statut'])){
     $_SESSION['time_statut'] = 1;
 }
@@ -22,14 +31,14 @@ if (empty($_SESSION['challenges_names'])){
                                         'groupe_defi_4' => 'Tr’Hack It !');
     $_SESSION["launch_time"]=date("Y-m-d H:i:s");
 }
-/*-----Données-----*/
+/*-------------------- Data --------------------*/
 
 echo '
 <p style="position:absolute;" id="chrono"></p>
-<form method="GET" action="inc/'.$next.'.php" name="form" enctype="multipart/form-data">
+<form method="POST" action="inc/'.$next.'.php" name="form" enctype="multipart/form-data">
 <main>
     <section>
-        <h1>Sélectionne le défi :</h1>
+        <h1>Sélectionnez le défi :</h1>
         <select name="challenge" placeholder="Sélection du défi" id="challenge">';
             foreach($_SESSION['challenges_names'] as $key => $value){
                 echo '<option value="'.$key.'">'.$value.'</option>';
@@ -49,9 +58,6 @@ echo '
     </section>
 </main>';
 
-nextpage_form();
-echo '</form>
-<script src="js/timer.js"></script>';
+nextpage($next);
 
 require 'inc/end.php';
-}
