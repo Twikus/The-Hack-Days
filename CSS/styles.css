@@ -8,21 +8,25 @@
 body{
     position: relative;
     width: 100%;
-    height: 100vh;
+
     font-family: video, serif;
     font-weight: 700;
     font-style: normal;
     background-color: black;
 }
 
+form{
+    height: 100vh;
+}
+
 main{
+    width: 300px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    height: calc(100vh - 55px);
-    width: 300px;
     margin: auto;
     padding: 150px 0;
     visibility: hidden;
@@ -32,9 +36,15 @@ main > section{
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
-canvas#canv {
+.shorter{
+    padding: 75px 0 50px 0!important;
+    height: 100%;
+}
+
+#canv {
     position: absolute;
     z-index: -5;
 }
@@ -108,12 +118,13 @@ option{
 
 li{
     position: relative;
-    font-size: 25px;
+    font-size: 20px;
     margin: 0 15px;
     left: 0;
 }
 
 #chrono{
+    position:absolute;
     font-size: 25px;
     margin: 10px;
 }
@@ -136,7 +147,8 @@ header a{
 
 /*--------------------Footer--------------------*/
 footer{
-    position: relative;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     height: 55px;
     background-color: #4A4569;
@@ -144,7 +156,6 @@ footer{
     justify-content: space-between;
     align-items: center;
     align-items: center;
-    padding: 0 20px;
     text-decoration: none;
     font: 18px 'Gilroy', sans-serif !important;
     font-weight: bold !important;
@@ -168,6 +179,14 @@ footer > a{
     text-decoration: none;
     font: 18px 'Gilroy', sans-serif !important;
     font-weight: bold !important;
+}
+
+footer p{
+    padding-left: 20px;
+}
+
+footer span{
+    padding-right: 20px;
 }
 
 .material-symbols-outlined{

@@ -30,7 +30,7 @@ echo '
     </section>
 
     <section>
-        <h1>Votre photo d\'équipe :</h1>
+        <h1>Votre image d\'équipe :</h1>
         <div class="file">
             <input type="file" name="image" id="file" accept="image/png, image/jpg, image/jpeg">
         </div>

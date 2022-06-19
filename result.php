@@ -14,7 +14,7 @@ $etudiant_id=$_SESSION['groupe_etudiant_session'];
 /*-------------------- Data --------------------*/
 
 echo '
-<main>
+<main class="shorter">
     <section>
         <h1>Bravo tu as réussi <span>tous les défis !</span></h1>
     </section>

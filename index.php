@@ -5,6 +5,9 @@ session_destroy();
 
 /*-------------------- Data --------------------*/
 $next='name';
+$column_name = array();
+$to_replace = array('defi_', '_', '-');
+$replace_by = array('', ' ', "'");
 /*-------------------- Data --------------------*/
 
 echo '

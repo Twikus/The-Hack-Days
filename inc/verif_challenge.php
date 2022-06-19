@@ -25,7 +25,7 @@ if (!empty($_SESSION['complete_challenge'])){
 }
 
 $co = connexionBD();
-$resultat = $co->query('SELECT * FROM groupe WHERE groupe_id="'.$etudiant_id.'"');
+$resultat = $co->query('SELECT * FROM defi INNER JOIN groupe ON groupe._defi_id = defi.defi_id WHERE defi_id="'.$etudiant_id.'"');
 $lignes_resultat=$resultat->rowCount();
 if ($lignes_resultat>0) { 
     foreach ($resultat as $value) {

@@ -1,4 +1,4 @@
 <?php
 require '../inc/lib_crud.inc.php';
 
-session_destroy();
+unset($_SESSION['challenges_names']);

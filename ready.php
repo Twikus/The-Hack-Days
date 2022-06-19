@@ -17,12 +17,14 @@ $etudiant_id=$_SESSION['groupe_etudiant_session'];
 prevpage($prev);
 
 echo '
-<main>
+<main class="shorter">
     <section>
         <h1>Vous êtes prêt ?</h1>
+        <p class="text">Veuillez être <span>devant la salle</span> de votre premier défi avant de continuer, car à partir du moment ou vous cliquerez sur "suivant", <span>le chrono sera lancé !</span></p>
     </section>
     <section>
-        <p class="text">Veuillez être <span>devant la salle</span> de votre premier défi avant de continuer, car à partir du moment ou vous cliquerez sur "suivant", <span>le chrono sera lancé !</span></p>
+        <h1>À noter !</h1>
+        <p class="text">Il vous est toujours possible <span>d\'abandonner un défi</span> en tapant "<span>surrender</span>" comme clé, cependant le temps de ce dernier sera enregistré comme étant de <span>25min</span> !</p>
     </section>
 </main>';
 

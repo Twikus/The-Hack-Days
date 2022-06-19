@@ -25,16 +25,29 @@ if ($_SESSION['time_statut'] == 0){
     $_SESSION['time_statut'] = 1;
 }
 if (empty($_SESSION['challenges_names'])){
-    $_SESSION['challenges_names']=array('groupe_defi_1' => 'Le Cr’Hack du Dev',
-                                        'groupe_defi_2' => 'Hack n’ Snap', 
-                                        'groupe_defi_3' => 'Wall Hack', 
-                                        'groupe_defi_4' => 'Tr’Hack It !');
+    $column_name = array();
+    $_SESSION['challenges_names']=array();
+    $to_replace = array('defi_', '_', '-');
+    $replace_by = array('', ' ', "'");
+    $co = connexionBD();
+    $req ="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='sae202_appli' AND TABLE_NAME='defi'";
+    $resultat = $co->query($req);
+    
+    foreach ($resultat as $value) {
+        $column_name[] = $value['COLUMN_NAME'];
+    }
+    
+    for ($i=1; $i<count($column_name); $i++){
+        $_SESSION['challenges_names']+=array($column_name[$i] => str_replace($to_replace, $replace_by, $column_name[$i]));
+    }
+    deconnexionBD($co);
+    
     $_SESSION["launch_time"]=date("Y-m-d H:i:s");
 }
 /*-------------------- Data --------------------*/
 
 echo '
-<p style="position:absolute;" id="chrono"></p>
+<p id="chrono"></p>
 <form method="POST" action="inc/'.$next.'.php" name="form" enctype="multipart/form-data">
 <main>
     <section>

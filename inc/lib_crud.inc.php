@@ -2,10 +2,10 @@
 session_start();
 require 'config.inc.php';
 
-function error_found(){
+/*function error_found(){
   header("Location: ./index.php");
 }
-set_error_handler('error_found');
+set_error_handler('error_found');*/
 
 
 /*--------------------Connexion de la DB--------------------*/
@@ -29,7 +29,7 @@ function deconnexionBD($co) {
 
 /*--------------------Mettre a jour le groupe une fois connecté--------------------*/
 function ChangeGroup($co,$id,$team_name,$nouvelleImage){
-    $req = "UPDATE groupe SET groupe_nom='$team_name',groupe_photo='$nouvelleImage' WHERE groupe_id=".$id;
+    $req = "UPDATE groupe SET groupe_nom='$team_name',groupe_image='$nouvelleImage' WHERE groupe_id=".$id;
     //echo '<p>' . $req . '</p>' . "\n";
     try {
         $resultat = $co->query($req);
@@ -49,7 +49,7 @@ function ShowGroup($co,$etudiant_id){
     echo'
     <div>
         <h2>'.$value['groupe_nom'].'</h2>
-        <img src="medias/uploaded_images/'.$value['groupe_photo'].'">
+        <img src="medias/uploaded_images/'.$value['groupe_image'].'">
     </div>
 ';
     }

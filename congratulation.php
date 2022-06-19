@@ -18,12 +18,16 @@ if (empty($_SESSION['challenges_names'])){
     $next='challenge';
 }
 /*-------------------- Data --------------------*/
-
-echo '
-<p style="position:absolute;" id="chrono"></p>
+echo'
+<p id="chrono"></p>
 <main>
-    <section>
-        <h1>Bravo vous avez réussi le défi <span>"'.$_SESSION['complete_challenge'].'" !</span></h1>
+    <section>';
+if ($_SESSION['challenges_temps_inde'][$_SESSION['complete_challenge']] >= '00:25:00'){
+    echo'<h1>Vous n\'avez pas réussi le défi <span>"'.$_SESSION['complete_challenge'].'" </span>!</h1>';
+}else{
+    echo '<h1>Bravo vous avez réussi le défi <span>"'.$_SESSION['complete_challenge'].'" </span>!</h1>';
+}
+echo'
     </section>
     <section>
         <p class="text">Votre temps pour ce défi est de : <span>'.$_SESSION['challenges_temps_inde'][$_SESSION['complete_challenge']].'</span></p>

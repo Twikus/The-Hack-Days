@@ -8,8 +8,8 @@ if(isset($unexistant) === true && empty($unexistant) === false){
     $query = $co->query($alias.' LIKE "'.$unexistant.'"');
     if ($query->rowCount() >= 1) {
         foreach ($query as $value) {
-            echo $value['etudiant_td'].',';
-            echo $value['groupe_nom'].',';
+            echo $value['groupe_tp'].',';
+            echo $value['groupe_nom'];
         }
     }else{
         echo 'Aucun étudiant correspondant';

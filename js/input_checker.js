@@ -8,9 +8,12 @@ function Check_if_name_empty(){
     if (name != null){
         $.post('inc/input_checker.php', {name: name}, function(data){
             var convert_data = Object.values(data.split(','));
-
             if (convert_data.length>1){
-                $('#group_response').text('Tu fais parti du TP '+convert_data[0]+' et du groupe : "'+convert_data[1]+'" !');
+                if (convert_data[1]==''){
+                    $('#group_response').text('Tu fais parti du TP '+convert_data[0]+' et ton nom de groupe n\'est pas encore défini !');
+                }else{
+                    $('#group_response').text('Tu fais parti du TP '+convert_data[0]+' et du groupe : "'+convert_data[1]+'" !');
+                }          
                 $('.error').text('');
                 H2.timeScale(1).play();
             }else{
